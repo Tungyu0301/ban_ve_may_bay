@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
+
+<!-- Mirrored from cyclonethemes.com/demo/html/yatra/flight.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Dec 2019 17:22:12 GMT -->
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Booking Flight</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo1.png">
+    <!-- Bootstrap core CSS -->
+    <link href="~/public/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+    <!--Custom CSS-->
+    <link href="~/public/css/flight.css" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="font/flaticon.css" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="~/public/css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <script src="~/public/js/jquery-3.2.1.min.js"></script>
+
+</head>
+<body style="background-color: #FAFAFA;">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+    <!-- Preloader Ends -->
+    <!-- Header -->
+    <header>
+        @Html.Action("_Header", "Modules")
+
+        <!-- Navigation Bar -->
+        @Html.Action("_Mainmenu", "Modules")
+        <!-- Navigation Bar Ends -->
+    </header>
+    <!-- Header Ends -->
+    <!-- Slider -->
+    @Html.Action("Slider", "Modules")
+    <!-- End Slider -->
+    @RenderBody()
+    <!-- Top Destination Ends -->
+    @Html.Action("LogoSlide", "Modules")
+    <!-- Footer -->
+    @Html.Action("_Footer", "Modules")
+    <!-- Footer Ends -->
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+    <!-- *Scripts* -->
+
+    <script src="~/public/js/bootstrap.min.js"></script>
+    <script src="~/public/js/plugin.js"></script>
+    <script src="~/public/js/main.js"></script>
+    <script src="~/public/js/custom-accordian.js"></script>
+    <script src="~/public/js/preloader.js"></script>
+</body>
+</html>

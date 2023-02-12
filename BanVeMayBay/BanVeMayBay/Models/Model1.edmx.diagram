@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7b7f08b691a34370bb631a29145d8ae1" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.city" Width="1.5" PointX="11.375" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.country" Width="1.5" PointX="8.875" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.menu" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.order" Width="1.5" PointX="8.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.ordersdetail" Width="1.5" PointX="16.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.role" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.ticket" Width="1.5" PointX="14.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BANVEMAYBAYModel.user" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_city_country1" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_ticket_city" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_ticket_city1" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_menu_to_user" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_orderDetail_to_order11" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_orderDetail_to_product" ManuallyRouted="false" />
+        <AssociationConnector Association="BANVEMAYBAYModel.FK_user_to_role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,129 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<BanVeMayBay.Models.ticket>
+@{
+    ViewBag.Title = "flightSearch";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="flight-destinations">
+    <div class="container-fluid bg-white">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="flight-head">
+                    <div class="">
+                        <nav aria-label="breadcrumb">
+                            <span style="font-weight:bold; font-size:22px;"><i class="fas fa-fighter-jet"></i>Tất cả chuyến bay </span>
+
+                        </nav>
+                    </div>
+                </div>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                <div class="flight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Máy Bay</th>
+                                <th>Từ</th>
+                                <th>Đến</th>
+                                <th>Hạng</th>
+                                <th>Giá</th>
+                                <th>Chi Tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td class="text-center">
+                                    <img style="width:80px;height:90px" src="~/public/images/flight/@item.airline" alt="">
+                                </td>
+                                <td>
+                                    <h6>@item.city.cityName</h6>
+                                    <p>Từ (@item.city.cityName)</p>
+                                </td>
+                                <td>
+                                    <h6>@item.city1.cityName</h6>
+                                    <P>Đến (@item.city1.cityName)</P>
+                                </td>
+                                <td>
+                                    <h6>
+                                        @item.ticketType
+                                    </h6>
+                                </td>
+                                <td>
+                                    <h6><strong class="color-red-3">@item.price.Value.ToString("N0") $</strong></h6>
+                                    <p class="emi">(Currency - $)</p>
+                                </td>
+                                <td>
+                                    <a href="~/chuyen-bay/@item.id">Detail</a>
+                                </td>
+
+
+
+                            </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="pagination-content text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a href="~/@ViewBag.url?page=1" class="single-btn prev-btn ">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            @{
+                                var firstPage = 1;
+                                if ((int)Model.PageNumber > 1)
+                                {
+                                    firstPage = (int)Model.PageNumber - 1;
+                                }
+
+                                var lastpage = Model.PageNumber;
+                                if (lastpage < Model.PageCount)
+                                {
+                                    lastpage = (int)Model.PageNumber + 1;
+                                }
+
+                            }
+                            <a href="~/@ViewBag.url?page=@firstPage" class="single-btn prev-btn ">
+                                <i class="fa fa-angle-left" aria-hidden="true"></i>
+                            </a>
+                        </li>
+
+                        @for (int i = Model.PageNumber; i <= Model.PageCount; i++)
+                        {
+
+                            if (i < Model.PageNumber + 5)
+                            {
+                                <li id="active_@i"><a href="~/@ViewBag.url?page=@i" class="single-btn">@i  </a></li>
+                            }
+
+                        }
+                        <li>
+                            <a href="~/@ViewBag.url?page=@lastpage" class="single-btn next-btn">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="~/@ViewBag.url?page=@Model.PageCount" class="single-btn next-btn">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Destination Ends -->
+<script>
+    $("#active_@Model.PageNumber").addClass("active");
+    function ajaxShowItem(t) {
+        console.log(t.value)
+    }
+</script>

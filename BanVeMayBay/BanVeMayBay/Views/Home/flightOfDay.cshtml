@@ -1,0 +1,72 @@
+﻿
+@model IEnumerable<BanVeMayBay.Models.ticket>
+@{
+    ViewBag.Title = "flightSearch";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="flight-destinations">
+    <div class="container-fluid bg-white">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <div class="flight-head">
+                    <div class="">
+                        <nav aria-label="breadcrumb">
+                            @{var Date = ViewBag.dateNow; }
+                            <span style="font-weight:bold; font-size:22px;"><i class="fas fa-fighter-jet"></i> Chuyến bay trong ngày: @Date.ToString("dd/MM/yyyy") </span>
+
+                        </nav>
+                    </div>
+                </div>
+               
+                <div class="flight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Hãng</th>
+                                <th>Từ</th>
+                                <th>Đến</th>
+                                <th>Chi Tiết</th>
+                                <th>Giá</th>
+                    
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        <img style="width:80px;height:80px" src="~/public/images/flight/@item.airline" alt="">
+                                    </td>
+                                    <td>
+                                        <h6>@item.city.cityName</h6>
+                                        <p>Airport (@item.city.cityName)</p>
+                                    </td>
+                                    <td>
+                                        <h6>@item.city1.cityName</h6>
+                                        <P>Airport (@item.city1.cityName)</P>
+                                    </td>
+                                    <td>
+                                        <a href="~/chuyen-bay/@item.id">Detail</a>
+                                    </td>
+                                   
+                                    <td>
+                                        <h6><strong class="color-red-3">@item.price.Value.ToString("N0") $</strong></h6>
+                                        <p class="emi">(Currency - $)</p>
+                                    </td>
+                                  
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- Destination Ends -->

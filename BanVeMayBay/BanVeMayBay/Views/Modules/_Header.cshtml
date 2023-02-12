@@ -1,0 +1,25 @@
+﻿<div class="upper-head clearfix " style="background-color:#0404B4;">
+    <div class="container ">
+        <div class="upper-head-inner">
+            <div class="contact-info pull-left">
+                <div class="contact-info-item"><i class="flaticon-phone-call"></i></div>
+                <i class="flaticon-mail"></i><p> Mail: <span>hoangtutungpro@gmail.com</span></p>
+            </div>
+            <div class="login-btn pull-right">
+                @if (ViewBag.sessionFullname != null)
+                {
+
+                    <p> Xin Chào: @ViewBag.sessionFullname </p>
+                    <a href="~/tai-khoan"><i class="fas fa-user"></i> Tài khoản</a>
+                    <a href="~/Customer/logout">Đăng Xuất</a>
+                }
+                else
+                {
+                    <a style="color:white" href="~/dang-nhap"><i class="fa fa-unlock-alt"></i> Đăng Nhập</a>
+                    <a style="color:white" href="~/dang-ky"><i class="fa fa-user-plus"></i> Đăng ký</a>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

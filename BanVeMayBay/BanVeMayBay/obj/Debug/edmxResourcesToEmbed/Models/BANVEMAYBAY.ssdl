@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANVEMAYBAYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="airport">
+    <Key>
+      <PropertyRef Name="airportId" />
+    </Key>
+    <Property Name="airportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="airpportName" Type="nvarchar" MaxLength="250" />
+    <Property Name="cityId" Type="int" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cityName" Type="nvarchar" MaxLength="250" />
+    <Property Name="countryId" Type="int" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="countryId" />
+    </Key>
+    <Property Name="countryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="countryName" Type="nvarchar" MaxLength="150" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="link" Type="varchar" MaxLength="255" />
+    <Property Name="tableid" Type="int" />
+    <Property Name="parentid" Type="int" Nullable="false" />
+    <Property Name="orders" Type="int" Nullable="false" />
+    <Property Name="position" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="created_by" Type="int" />
+    <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="updated_by" Type="int" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="guestTotal" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="CusId" Type="int" />
+    <Property Name="gioitinh" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="quoctich" Type="nvarchar" MaxLength="255" />
+    <Property Name="mess" Type="nvarchar" MaxLength="255" />
+    <Property Name="phone" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="total" Type="float" Nullable="false" />
+    <Property Name="created_ate" Type="smalldatetime" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ordersdetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="ticketId" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="topid" Type="int" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="detail" Type="ntext" />
+    <Property Name="img" Type="varchar" MaxLength="255" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="created_by" Type="int" Nullable="false" />
+    <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="updated_by" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="parentId" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="parentId" Type="int" Nullable="false" />
+    <Property Name="accessName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="225" />
+    <Property Name="GropID" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="description" Type="ntext" />
+    <Property Name="flightCode" Type="char" MaxLength="50" />
+    <Property Name="airline" Type="nvarchar" MaxLength="255" />
+    <Property Name="ticketType" Type="nvarchar" MaxLength="255" />
+    <Property Name="img" Type="nvarchar" MaxLength="255" />
+    <Property Name="departure_date" Type="date" />
+    <Property Name="guestTotal" Type="int" />
+    <Property Name="price" Type="float" />
+    <Property Name="priceSale" Type="float" />
+    <Property Name="Sold" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="date" Nullable="false" />
+    <Property Name="created_by" Type="int" Nullable="false" />
+    <Property Name="updated_at" Type="date" Nullable="false" />
+    <Property Name="updated_by" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="departure_time" Type="time" Precision="7" />
+    <Property Name="arrival_time" Type="time" Precision="7" />
+    <Property Name="fromAirport" Type="int" />
+    <Property Name="toAirport" Type="int" />
+  </EntityType>
+  <EntityType Name="topic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="slug" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="parentid" Type="int" Nullable="false" />
+    <Property Name="orders" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="created_by" Type="int" Nullable="false" />
+    <Property Name="updated_at" Type="smalldatetime" Nullable="false" />
+    <Property Name="updated_by" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fullname" Type="nvarchar(max)" />
+    <Property Name="username" Type="nvarchar(max)" />
+    <Property Name="password" Type="nvarchar(max)" />
+    <Property Name="email" Type="nvarchar(max)" />
+    <Property Name="gender" Type="nvarchar(max)" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar(max)" />
+    <Property Name="access" Type="int" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Nullable="false" />
+    <Property Name="created_by" Type="int" Nullable="false" />
+    <Property Name="updated_at" Type="datetime" Nullable="false" />
+    <Property Name="updated_by" Type="int" Nullable="false" />
+    <Property Name="status" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_airport_city">
+    <End Role="city" Type="Self.city" Multiplicity="0..1" />
+    <End Role="airport" Type="Self.airport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="airport">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_city_country1">
+    <End Role="country" Type="Self.country" Multiplicity="0..1" />
+    <End Role="city" Type="Self.city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="countryId" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menu_to_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="menu">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderDetail_to_order11">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="ordersdetail" Type="Self.ordersdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ordersdetail">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderDetail_to_product">
+    <End Role="ticket" Type="Self.ticket" Multiplicity="1" />
+    <End Role="ordersdetail" Type="Self.ordersdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ticket">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordersdetail">
+        <PropertyRef Name="ticketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ticket_airport">
+    <End Role="airport" Type="Self.airport" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="airport">
+        <PropertyRef Name="airportId" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="fromAirport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ticket_airport1">
+    <End Role="airport" Type="Self.airport" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="airport">
+        <PropertyRef Name="airportId" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="toAirport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_topic_to_post1">
+    <End Role="topic" Type="Self.topic" Multiplicity="0..1" />
+    <End Role="post" Type="Self.post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="post">
+        <PropertyRef Name="topid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_topic_to_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="topic" Type="Self.topic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="topic">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_to_role">
+    <End Role="role" Type="Self.role" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="parentId" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="access" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANVEMAYBAYModelStoreContainer">
+    <EntitySet Name="airport" EntityType="Self.airport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="country" EntityType="Self.country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ordersdetail" EntityType="Self.ordersdetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="post" EntityType="Self.post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ticket" EntityType="Self.ticket" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="topic" EntityType="Self.topic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_airport_city" Association="Self.FK_airport_city">
+      <End Role="city" EntitySet="city" />
+      <End Role="airport" EntitySet="airport" />
+    </AssociationSet>
+    <AssociationSet Name="FK_city_country1" Association="Self.FK_city_country1">
+      <End Role="country" EntitySet="country" />
+      <End Role="city" EntitySet="city" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menu_to_user" Association="Self.FK_menu_to_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="menu" EntitySet="menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderDetail_to_order11" Association="Self.FK_orderDetail_to_order11">
+      <End Role="order" EntitySet="order" />
+      <End Role="ordersdetail" EntitySet="ordersdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderDetail_to_product" Association="Self.FK_orderDetail_to_product">
+      <End Role="ticket" EntitySet="ticket" />
+      <End Role="ordersdetail" EntitySet="ordersdetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ticket_airport" Association="Self.FK_ticket_airport">
+      <End Role="airport" EntitySet="airport" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ticket_airport1" Association="Self.FK_ticket_airport1">
+      <End Role="airport" EntitySet="airport" />
+      <End Role="ticket" EntitySet="ticket" />
+    </AssociationSet>
+    <AssociationSet Name="FK_topic_to_post1" Association="Self.FK_topic_to_post1">
+      <End Role="topic" EntitySet="topic" />
+      <End Role="post" EntitySet="post" />
+    </AssociationSet>
+    <AssociationSet Name="FK_topic_to_user" Association="Self.FK_topic_to_user">
+      <End Role="user" EntitySet="user" />
+      <End Role="topic" EntitySet="topic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_to_role" Association="Self.FK_user_to_role">
+      <End Role="role" EntitySet="role" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

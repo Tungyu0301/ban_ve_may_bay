@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Invalid";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+
+
+
+@*<div class="container ">
+        <div class="row">
+            <div class="col-md-10">
+                <span style="font-weight:bold;color:red; font-size:22px;">
+                    <i class="fas fa-fighter-jet">Please login to be able to buy tickets or pay </i>
+                </span>
+            </div>
+        </div>
+    </div>*@
+
+<section class="login-block">
+    <form action="Login" method="post">
+        <div class="container">
+            @Html.Partial("_MessgeAlert")
+            <div class="row">
+                <div class="col-md-4 login-sec">
+                    <h2 class="text-center">Đăng Nhập Ngay</h2>
+                    <h4 style="color:darkred">Đăng nhập để mua vé hoặc đặt vé </h4>
+                    <form class="login-form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-uppercase">Tài Khoản</label>
+                            <input type="text" class="form-control" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <span class="text-danger">@ViewBag.error</span>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <small>Nhớ Tài Khoản</small>
+                            </label>
+                            <div>
+                                <button type="submit" class="btn-blue btn-red btn-style-1 pt-2">Xác nhận</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="col-md-8 banner-sec">
+                    <div>
+                        <div>
+                            <img class="d-block img-fluid" src="https://statics.vinpearl.com/canh-dep-viet-nam-11_1634999614.jpg" width="650" height="400">
+                            <div>
+                                <div class="banner-text">
+                                    <h4>
+                                        Cầu Vàng Đà Nẵng – một trong những cảnh đẹp nổi tiếng của Việt Nam<h4>
+                                            <p>Du lịch Đà Nẵng hấp dẫn từ vẻ đẹp của các vùng biển, vùng núi và cả cảnh đẹp từ các khu du lịch, di tích... <p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </form>
+
+</section>

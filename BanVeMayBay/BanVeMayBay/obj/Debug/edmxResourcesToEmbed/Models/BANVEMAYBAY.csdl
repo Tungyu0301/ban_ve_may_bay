@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BANVEMAYBAYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="airport">
+    <Key>
+      <PropertyRef Name="airportId" />
+    </Key>
+    <Property Name="airportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="airpportName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="cityId" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <NavigationProperty Name="city" Relationship="Self.FK_airport_city" FromRole="airport" ToRole="city" />
+    <NavigationProperty Name="tickets" Relationship="Self.FK_ticket_airport" FromRole="airport" ToRole="ticket" />
+    <NavigationProperty Name="tickets1" Relationship="Self.FK_ticket_airport1" FromRole="airport" ToRole="ticket" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cityName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="countryId" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <NavigationProperty Name="airports" Relationship="Self.FK_airport_city" FromRole="city" ToRole="airport" />
+    <NavigationProperty Name="country" Relationship="Self.FK_city_country1" FromRole="city" ToRole="country" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="countryId" />
+    </Key>
+    <Property Name="countryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="countryName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Int32" />
+    <NavigationProperty Name="cities" Relationship="Self.FK_city_country1" FromRole="country" ToRole="city" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tableid" Type="Int32" />
+    <Property Name="parentid" Type="Int32" Nullable="false" />
+    <Property Name="orders" Type="Int32" Nullable="false" />
+    <Property Name="position" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created_by" Type="Int32" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="updated_by" Type="Int32" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_menu_to_user" FromRole="menu" ToRole="user" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="guestTotal" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CusId" Type="Int32" />
+    <Property Name="gioitinh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="quoctich" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="mess" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="total" Type="Double" Nullable="false" />
+    <Property Name="created_ate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ordersdetails" Relationship="Self.FK_orderDetail_to_order11" FromRole="order" ToRole="ordersdetail" />
+  </EntityType>
+  <EntityType Name="ordersdetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderid" Type="Int32" Nullable="false" />
+    <Property Name="ticketId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="order" Relationship="Self.FK_orderDetail_to_order11" FromRole="ordersdetail" ToRole="order" />
+    <NavigationProperty Name="ticket" Relationship="Self.FK_orderDetail_to_product" FromRole="ordersdetail" ToRole="ticket" />
+  </EntityType>
+  <EntityType Name="post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="topid" Type="Int32" />
+    <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created_by" Type="Int32" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="updated_by" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="topic" Relationship="Self.FK_topic_to_post1" FromRole="post" ToRole="topic" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="parentId" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="parentId" Type="Int32" Nullable="false" />
+    <Property Name="accessName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="225" FixedLength="false" Unicode="true" />
+    <Property Name="GropID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK_user_to_role" FromRole="role" ToRole="user" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="ticket">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="flightCode" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="airline" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ticketType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="departure_date" Type="DateTime" Precision="0" />
+    <Property Name="guestTotal" Type="Int32" />
+    <Property Name="price" Type="Double" />
+    <Property Name="priceSale" Type="Double" />
+    <Property Name="Sold" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created_by" Type="Int32" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="updated_by" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="departure_time" Type="Time" Precision="7" />
+    <Property Name="arrival_time" Type="Time" Precision="7" />
+    <Property Name="fromAirport" Type="Int32" />
+    <Property Name="toAirport" Type="Int32" />
+    <NavigationProperty Name="airport" Relationship="Self.FK_ticket_airport" FromRole="ticket" ToRole="airport" />
+    <NavigationProperty Name="airport1" Relationship="Self.FK_ticket_airport1" FromRole="ticket" ToRole="airport" />
+    <NavigationProperty Name="ordersdetails" Relationship="Self.FK_orderDetail_to_product" FromRole="ticket" ToRole="ordersdetail" />
+  </EntityType>
+  <EntityType Name="topic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="slug" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="parentid" Type="Int32" Nullable="false" />
+    <Property Name="orders" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="created_by" Type="Int32" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="updated_by" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="posts" Relationship="Self.FK_topic_to_post1" FromRole="topic" ToRole="post" />
+    <NavigationProperty Name="user" Relationship="Self.FK_topic_to_user" FromRole="topic" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fullname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="access" Type="Int32" Nullable="false" />
+    <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="created_by" Type="Int32" Nullable="false" />
+    <Property Name="updated_at" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="updated_by" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="menus" Relationship="Self.FK_menu_to_user" FromRole="user" ToRole="menu" />
+    <NavigationProperty Name="role" Relationship="Self.FK_user_to_role" FromRole="user" ToRole="role" />
+    <NavigationProperty Name="topics" Relationship="Self.FK_topic_to_user" FromRole="user" ToRole="topic" />
+  </EntityType>
+  <Association Name="FK_airport_city">
+    <End Role="city" Type="Self.city" Multiplicity="0..1" />
+    <End Role="airport" Type="Self.airport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="airport">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ticket_airport">
+    <End Role="airport" Type="Self.airport" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="airport">
+        <PropertyRef Name="airportId" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="fromAirport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ticket_airport1">
+    <End Role="airport" Type="Self.airport" Multiplicity="0..1" />
+    <End Role="ticket" Type="Self.ticket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="airport">
+        <PropertyRef Name="airportId" />
+      </Principal>
+      <Dependent Role="ticket">
+        <PropertyRef Name="toAirport" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_city_country1">
+    <End Role="country" Type="Self.country" Multiplicity="0..1" />
+    <End Role="city" Type="Self.city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country">
+        <PropertyRef Name="countryId" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_menu_to_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="menu" Type="Self.menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="menu">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderDetail_to_order11">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="ordersdetail" Type="Self.ordersdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ordersdetail">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderDetail_to_product">
+    <End Role="ticket" Type="Self.ticket" Multiplicity="1" />
+    <End Role="ordersdetail" Type="Self.ordersdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ticket">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ordersdetail">
+        <PropertyRef Name="ticketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_topic_to_post1">
+    <End Role="topic" Type="Self.topic" Multiplicity="0..1" />
+    <End Role="post" Type="Self.post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="topic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="post">
+        <PropertyRef Name="topid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_to_role">
+    <End Role="role" Type="Self.role" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="parentId" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="access" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_topic_to_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="topic" Type="Self.topic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="topic">
+        <PropertyRef Name="created_by" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BANVEMAYBAYEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="airports" EntityType="Self.airport" />
+    <EntitySet Name="cities" EntityType="Self.city" />
+    <EntitySet Name="countries" EntityType="Self.country" />
+    <EntitySet Name="menus" EntityType="Self.menu" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="ordersdetails" EntityType="Self.ordersdetail" />
+    <EntitySet Name="posts" EntityType="Self.post" />
+    <EntitySet Name="roles" EntityType="Self.role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="tickets" EntityType="Self.ticket" />
+    <EntitySet Name="topics" EntityType="Self.topic" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_airport_city" Association="Self.FK_airport_city">
+      <End Role="city" EntitySet="cities" />
+      <End Role="airport" EntitySet="airports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ticket_airport" Association="Self.FK_ticket_airport">
+      <End Role="airport" EntitySet="airports" />
+      <End Role="ticket" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ticket_airport1" Association="Self.FK_ticket_airport1">
+      <End Role="airport" EntitySet="airports" />
+      <End Role="ticket" EntitySet="tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_city_country1" Association="Self.FK_city_country1">
+      <End Role="country" EntitySet="countries" />
+      <End Role="city" EntitySet="cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_menu_to_user" Association="Self.FK_menu_to_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="menu" EntitySet="menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderDetail_to_order11" Association="Self.FK_orderDetail_to_order11">
+      <End Role="order" EntitySet="orders" />
+      <End Role="ordersdetail" EntitySet="ordersdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderDetail_to_product" Association="Self.FK_orderDetail_to_product">
+      <End Role="ticket" EntitySet="tickets" />
+      <End Role="ordersdetail" EntitySet="ordersdetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_topic_to_post1" Association="Self.FK_topic_to_post1">
+      <End Role="topic" EntitySet="topics" />
+      <End Role="post" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_to_role" Association="Self.FK_user_to_role">
+      <End Role="role" EntitySet="roles" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_topic_to_user" Association="Self.FK_topic_to_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="topic" EntitySet="topics" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

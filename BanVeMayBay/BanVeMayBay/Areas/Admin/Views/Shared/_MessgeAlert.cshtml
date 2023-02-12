@@ -1,0 +1,8 @@
+﻿@using BanVeMayBay.Models
+@if (Message.has_flash())
+{
+    MessageModel ms = Message.get_flash();
+    <div class="float-left ">
+        <p class="  alert alert-@ms.msg_css "><span class="font-weight-bold"> Thông Báo:</span> @ms.msg</p>
+    </div>
+}

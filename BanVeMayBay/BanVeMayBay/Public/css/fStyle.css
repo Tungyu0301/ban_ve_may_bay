@@ -1,0 +1,112 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+}
+
+    .btn-green {
+        background-color: #28a745;
+        color: white;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .bg-blues {
+        background-color: #326690;
+    }
+
+    .text-blues {
+        color: #326690;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    .active-nav-ul {
+        background-color: #E6E6E6;
+    }
+
+    .title-top-ad {
+        font-size: 30px;
+        margin-top: -10px;
+    }
+
+    .ajaxload-effect-table {
+
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        display: block;
+    }
+        .ajaxload-effect-table > i {
+            font-size: 35px;
+            color: blue;
+            position: absolute;
+            z-index: 101;
+            top: 50%;
+            left: 50%;
+            animation: rotate 0.5s infinite;
+        }
+
+    .rotate {
+        animation: rotate 1s;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin: 30px auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .modal-lg {
+        width: 900px;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90%;
+        max-width: 1200px;
+    }
+}
+.modal-body {
+    max-height: 650px;
+    overflow-y: auto;
+}
+
+.ajs-message.ajs-success {
+    color: #000 !important;
+    background-color: #d9ecda !important;
+    border-color: #26852b !important;
+    text-shadow: none !important;
+}
+.ajs-message.ajs-error {
+    color: #000 !important;
+    background-color: #F78181 !important;
+    border-color: #FF0000 !important;
+    text-shadow: none !important;
+}
+.ajs-message.ajs-warning {
+    color: #000 !important;
+    background-color: #F3F781 !important;
+    border-color: #FFFF00 !important;
+    text-shadow: none !important;
+}

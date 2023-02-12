@@ -1,0 +1,79 @@
+﻿@model BanVeMayBay.Models.order
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="booking">
+    <div class="container bg-white" style="margin-bottom:50px">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="booking-confirmed booking-outer">
+                    <div class="confirmation-title">
+                        <div class="form-title form-title-1">
+                            <h2 class="text-danger">Đặt vé thành công</h2>
+                        </div>
+                        <p class="text-success">Vé đã được gửi đến email của bạn.</p>
+                        <div class="payment-info detail">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="confirmation-details detail">
+                                        <h3>Thông tin Đặt vé</h3>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="title">ID</td>
+                                                    <td class="b-id">@Model.ID</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Hành Khách</td>
+                                                    <td>@Model.name </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Email</td>
+                                                    <td>@Model.email</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">SĐT</td>
+                                                    <td>@Model.phone</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Số Lượng</td>
+                                                    <td>@Model.guestTotal</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Giới tính</td>
+                                                    <td>@Model.gioitinh</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Quốc Tịch</td>
+                                                    <td>@Model.quoctich</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Tin nhắn</td>
+                                                    <td>@Model.mess</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Ngày đặt</td>
+                                                    <td>@Model.created_ate</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="title">Tổng cộng:</td>
+                                                    <td><h4 class="text-danger"> @Model.total.ToString("N0") $</h4></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <div class="col-md-12">
+                @Html.Action("_BookingConnfig", "Checkout", new { orderId = Model.ID})
+                <h3> Total: @Model.total.ToString("N0") $</h3>
+            </div>
+        </div>
+    </div>
+</section>

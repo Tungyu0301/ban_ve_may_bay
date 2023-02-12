@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-login-admin">
+
+    <section class="container pt-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header "><p class="card-title m-0 " style="font-size:17px;">Đăng nhập</p></div>
+                    <div class="card-body">
+                        <form action="" id="form-login" method="POST">
+                            <div>
+                                <input type="text" value="admin" name="username" id="e-mail" class="form-control " placeholder="Account">
+                                <span class="text-danger" id="checkuser"></span>
+                            </div>
+                            <div class="pt-3 " id="pass">
+                                <input type="password" value="123456" name="password" id="username" class="form-control" placeholder="Password">
+                                <span class="text-danger" id="checkpass"></span>
+
+                            </div>
+                            <span class="text-danger"> @ViewBag.error</span>
+                            <div class="pt-3">
+                                <input type="checkbox" name="checkbox" id="checkbox">
+                                <label for="coding" class="card-text text-dark m-0">Nhớ Tài khoản</label>
+                            </div>
+                            <div class="pt-2"><button class="btn bg-success text-white w-100" type="submit"> Đăng nhập</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html> 

@@ -1,0 +1,118 @@
+﻿@model BanVeMayBay.Models.ticket
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_layOutAdmin.cshtml";
+}
+
+<h2>Chi Tiết Vé</h2>
+
+<div>
+    <h4>Chi Tiết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flightCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flightCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.airline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.airline)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city.cityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city.cityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.city1.cityName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city1.cityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ticketType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticketType)
+        </dd>
+
+      
+        <dt>
+            @Html.DisplayNameFor(model => model.departure_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departure_date)
+        </dd>
+
+        <dt>@Html.DisplayNameFor(model => model.departure_time)</dt>
+        <dd>@Html.DisplayFor(model => model.departure_time)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.arrival_time)</dt>
+        <dt>@Html.DisplayFor(model => model.arrival_time)</dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.guestTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guestTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

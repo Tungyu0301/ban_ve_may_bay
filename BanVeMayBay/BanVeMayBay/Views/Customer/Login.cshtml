@@ -1,0 +1,88 @@
+﻿@{
+        ViewBag.Title = "flightSearch";
+        Layout = "~/Views/Shared/_layOutSite.cshtml";
+    }
+@*<section class="">
+        <div>
+            <form action="" method="post">
+                <div class="container">
+                    @Html.Partial("_MessgeAlert")
+                    <div class="row bg-light">
+                        <div class="form-group col-md-3 col-xs-12">
+                            <div>
+                                <label>Tên đăng nhập:</label>
+                                <input type="text" class="form-control" name="username">
+                            </div>
+                            <div>
+                                <label>Mật khẩu:</label>
+                                <input type="password" class="form-control" name="password">
+                            </div>
+                            <span class="text-danger">@ViewBag.error</span>
+                            <button style="margin-top:20px;" class="btn-blue btn-red btn-style-1 pt-2" type="submit">Đăng nhập</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>*@
+
+<section class="login-block">
+    <form action="" method="post">
+        <div class="container">
+            @Html.Partial("_MessgeAlert")
+            <div class="row">
+                <div class="col-md-4 login-sec">
+                    <h2 class="text-center">Login Now</h2>
+                    <form class="login-form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                            <input type="text" class="form-control" name="username">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                            <input type="password" class="form-control" name="password">
+                        </div>
+                        <span class="text-danger">@ViewBag.error</span>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <small>Nhớ tài khoản</small>
+                            </label>
+                            <div>
+                                <button type="submit" class="btn-blue btn-red btn-style-1 pt-2">Đăng nhập</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+                <div class="col-md-8 banner-sec">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div>
+                            <div>
+                                <img class="d-block img-fluid" src="https://airlines.iata.org/sites/default/files/event_images/web_schiphol-airport-exterior_credit__iStock-458937467_0.png" width="650" height="400">
+
+                                @*<img typeof="foaf:Image" class="img-responsive" src="https://airlines.iata.org/sites/default/files/event_images/web_schiphol-airport-exterior_credit__iStock-458937467_0.png" width="650" height="400" alt="">*@
+                                <div>
+                                    <div class="banner-text">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </form>
+
+</section>
+<!-- Destination Ends -->

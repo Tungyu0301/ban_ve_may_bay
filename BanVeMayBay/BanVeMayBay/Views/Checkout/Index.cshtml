@@ -1,0 +1,150 @@
+﻿@model IEnumerable<BanVeMayBay.Models.ticket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="booking">
+    <div class="container bg-white" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="booking-form booking-outer">
+                    <div class="payment-info detail" style="padding-top: 100px;">
+                        <div class="row">
+                            @if (Model.Count() > 1)
+                            {
+                                <h4 class="text-danger"> 2 Chiều </h4>
+                            }
+                            else
+                            {
+                                <h4 class="text-danger"> Một Chiều </h4>
+                            }
+                            @{ var sum = 0;}
+                            @foreach (var item in Model)
+                            {
+
+                                <div class="col-md-6">
+
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="title">Tổng Cộng</td>
+                                                <td class="b-id text-danger">@item.price.Value.ToString("N0") $</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">Ngày Khởi Hành</td>
+                                                <td>@item.departure_date.Value.ToString("dd/MM/yyyy")</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">Thời Gian Khởi Hành </td>
+                                                <td>
+                                                    <h6>@item.departure_time</h6>
+                                                </td>
+                                               
+                                            </tr>
+                                            <tr>
+                                                <td class="title">Thời Gian Đến</td>
+                                                <td>
+                                                    <h6>@item.arrival_time</h6>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">Từ</td>
+                                                <td>@item.city.cityName</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title">Đến</td>
+                                                <td>@item.city1.cityName</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                sum += (int)item.price;
+                            }
+                            @{ sum = sum * (int)ViewBag.songuoi;
+                            }
+                            <h3 class="text-danger">Total: @sum.ToString("N0") $</h3>
+                        </div>
+                    </div>
+
+                    <form action="~/Checkout/checkOut" method="post">
+                       
+
+                        <input type="hidden" value="@ViewBag.ve1" name="veOnvay" />
+                        <input type="hidden" value="@ViewBag.ve2" name="veReturn" />
+                        <input type="hidden" value="@sum" name="total" />
+                        <div class="row">
+                            <div class="form-group col-xs-6">
+                                <label>Số lượng:</label>
+                                <input type="text" class="form-control" value="@ViewBag.songuoi" disabled>
+                                <input name="guestTotal" type="hidden" class="form-control" value="@ViewBag.songuoi">
+                            </div>
+                            <div class="form-group col-xs-12">
+                                <label>Hành khách:</label>
+                                <input name="name" type="text" class="form-control" id="Name" placeholder="Your Name." required>
+                            </div>
+                            <div class="form-group col-xs-6">
+                                <label>Email:</label>
+                                <input type="email" name="email" class="form-control" id="email" placeholder="abc@xyz.com" required>
+                            </div>
+                            <div class="form-group col-xs-6 col-left-padding">
+                                <label>SĐT:</label>
+                                <input name="phone" type="tel" required
+        class="form-control" id="phnumber" placeholder="0...." />
+                                <span asp-validation-for="phone" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group col-xs-6">
+                                <label>Giới tính:</label>
+                                <select required name="gioitinh">
+
+                                    <option value="female" selected>Nữ</option>
+                                    <option value="male">Nam</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-xs-6 col-left-padding">
+                                <label>National:</label>
+                                <select required name="quoctich">
+                                    <option value="VN">Việt Nam</option>
+                                    <option value="K">Other</option>
+                                </select>
+                            </div>
+                            <div class="textarea col-xs-12">
+                                <label>Tin nhắn:</label>
+                                <textarea name="mess" placeholder="Tin nhắn đến chúng tôi" required></textarea>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <div class="checkbox-outer">
+                                    <input type="radio" name="payment" value="checkinPayment" checked><label>Thanh toán ở sân bay</label><br />
+                                    <input type="radio" value="credit" disabled><label class="text-secondary"> <strike>Thanh toán qua ngân hàng</strike>(Chưa hỗ trợ)</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                         <div class="container ">
+                            <div class="row" style="padding-bottom:50px;">
+                            <div class="row" style="padding-bottom:50px">
+                                <div class="col-md-10">
+
+                                </div>
+                                <div>
+                                    <button class="btn-blue btn-red btn-style-1 " type="submit">Tiếp theo</button>
+
+                                </div>
+                            </div>
+                        </div>
+                             </div>
+                    </form>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+

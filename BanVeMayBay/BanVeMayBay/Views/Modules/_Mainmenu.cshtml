@@ -1,0 +1,30 @@
+﻿@model IEnumerable<BanVeMayBay.Models.menu>
+<div class="navigation bg-white" style="padding-bottom: 10px;">
+    <div class="container ">
+        <div class="navigation-content">
+            <div class="header_menu">
+                <!-- start Navbar (Header) -->
+                <nav class="navbar navbar-default navbar-sticky-function navbar-arrow">
+                    <div class="logo pull-left">
+                        <a href="~/"><img alt="Image" width="50" height="50" src="https://portal.huflit.edu.vn/Content/logo/logosona.jpg"></a>
+                    </div>
+                    <div id="navbar" class="navbar-nav-wrapper">
+                        <ul class="nav navbar-nav " id="responsive-menu">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <a href="~/@item.link" style="color: #000000; ">@item.name </a>
+
+                                </li>
+                            }
+                            <!--/.nav-collapse -->
+                        </ul>
+
+                    </div>
+
+                    <div id="slicknav-mobile"></div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

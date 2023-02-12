@@ -1,0 +1,280 @@
+﻿
+@{
+    ViewBag.Title = "Trang Chủ";
+    Layout = "~/Views/Shared/_layOutSiteHeader.cshtml";
+}
+<section class="mt_search" style="margin-top:50px !important; ">
+
+    <div class="container card bg-white" style="padding:30px !important; ">
+        <div class="search-content-slider">
+            <div class="section-title text-center ">
+                <h2>Tìm Chuyến Bay</h2>
+                <p>
+                    Công ty du lịch Hoàn Hảo – Mang lại dịch vụ hoàn hảo đến với khách hàng
+                </p>
+            </div>
+            <form action="~/Site/flightSearch" method="post" id="form-search">
+                <div class="radio" align="center">
+                    <label><input value="disable" type="radio" id="typeticket" name="typeticket" checked>Một Chiều</label>
+                    <label><input value="enable" type="radio" id="typeticket" name="typeticket">Hai Chiều</label>
+
+                </div>
+                <input type="hidden" id="ticketCheck" value="" />
+
+                <div class="row">
+                    
+                    <div class="col-md-3 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                <select name="departure_address" class="selectpicker form-control" tabindex="1" required>
+
+                                    @foreach (var item in ViewBag.cities)
+                                    {
+                                        <option value="@item.cityName">@item.cityName</option>
+                                    }
+
+                                </select>
+                                <i class="flaticon-maps-and-flags"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                <select name="arrival_address" class="selectpicker form-control" tabindex="1">
+
+
+                                    @foreach (var item in ViewBag.cities)
+                                    {
+                                        <option value="@item.cityName">@item.cityName</option>
+                                    }
+
+                                </select>
+                                <i class="flaticon-maps-and-flags"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <div class="table_item">
+                                    <div class="form-group">
+                                        <select name="songuoi1" class="selectpicker form-control" tabindex="1">
+                                            <option value="1" selected>1 Người Lớn</option>
+                                            <option value="2">2 Người Lớn</option>
+                                            <option value="3">3 Người Lớn</option>
+                                            <option value="4">4 Người Lớn</option>
+                                            <option value="5">5 Người Lớn</option>
+                                        </select>
+                                        <i class="flaticon-box"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="table_item">
+                                    <div class="form-group">
+                                        <select name="songuoi2" class="selectpicker form-control" tabindex="1">
+                                            <option value="0">0 Trẻ Em</option>
+                                            <option value="1">1 Trẻ Em</option>
+                                            <option value="2">2 Trẻ Em</option>
+
+</select>
+                                        <i class="flaticon-box"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6">
+                                <div class="table_item">
+                                    <div class="form-group">
+                                        <select name="songuoi3" class="selectpicker form-control" tabindex="1">
+                                            <option value="0">0 Người Cao Tuổi</option>
+                                            <option value="1">1 Người Cao Tuổi</option>
+                                            <option value="2">2 Người Cao Tuổi</option>
+                                            <option value="3">3 Người Cao Tuổi</option>
+
+                                        </select>
+                                        <i class="flaticon-box"></i>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group ">
+                                <div class='input-group date' id='datetimepicker1'>
+                                    <input type="text" id="departure_date" name="departure_date" class="form-control" placeholder="Ngày Khởi Hành" onclick="return 0" required />
+                                    <i class="flaticon-calendar"></i>
+
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+
+                                </div>
+                                @Html.Partial("_MessgeAlert")
+                                <span class="text-danger" id="ngaybay"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="table_item">
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker2'>
+                                    <input type='text' id="arrival_date" name="arrival_date" class="form-control" placeholder="Ngày Về" required />
+                                    <i class="flaticon-calendar"></i>
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </span>
+
+                                </div>
+                                <span class="text-danger" id="ngayve"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-md-12  ">
+                    <div class="table_item " align="center">
+                        <div class="search ">
+                            <button type="submit" class="btn-blue btn-red ">Tìm Kiếm Chuyến Bay</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Top Destinations -->
+<section class="flight-destinations">
+
+    <div class="container bg-white">
+        <div class="row">
+            <form action="~/Checkout/Index" method="post">
+                <input type="hidden" name="songuoi" value="@ViewBag.songuoi" />
+                <div class="col-md-12">
+                    <div class="flight-head">
+                        <div class="">
+                            <div class="col-md-10">
+                                <nav aria-label="breadcrumb">
+                                    @{var Date = ViewBag.dateNow; }
+                                    <span style="font-weight:bold; font-size:22px;color:#ff6a00;"><i class="fas fa-fighter-jet"></i> Chuyến Bay Trong Ngày: @Date.ToString("dd-MM-yyyy") </span>
+
+                                </nav>
+                            </div>
+
+                            <div class="col-md-2"> <a href="~/chuyen-bay-trong-ngay" class="btn-blue btn-red btn-style-1 w-100">Hiện Tất Cả</a></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="flight-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Máy Bay</th>
+                                <th>Từ</th>
+                                <th>Đến</th>
+                                <th>Giờ Khởi Hành</th>
+                                <th>Giờ Đến</th>
+                                <th>Hạng</th>
+                                <th>Chi Tiết</th>
+                                <th>Giá</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in ViewBag.tickets)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        <img style="width:80px;height:60px" src="~/public/images/flight/@item.airline" alt="">
+                                    </td>
+                                    <td>
+                                        <h6>@item.city.cityName</h6>
+                                        <p>Airport (@item.city.cityName)</p>
+                                    </td>
+                                    <td>
+                                        <h6>@item.city1.cityName</h6>
+                                        <P>Airport (@item.city1.cityName)</P>
+                                    </td>
+                                    <td>
+                                        <h6>@item.departure_time</h6>
+                                    </td>
+                                    <td>
+                                        <h6>@item.arrival_time</h6>
+                                    </td>
+                                    <td>
+                                        <h6>@item.ticketType</h6>
+
+
+                                    </td>
+
+                                    <td>
+                                        <a href="~/chuyen-bay/@item.id">Detail</a>
+                                    </td>
+                                    <td>
+                                        <h6><strong class="color-red-3">@item.price.ToString("N0") $</strong></h6>
+                                        <p class="emi">(Currency - $)</p>
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</section>
+<script>
+    $("#form-search").submit(function (event) {
+        $("#ngaybay").text("");
+        $("#ngayve").text("");
+        var ngaybay = $("#departure_date").val();
+        var ngayve = $("#arrival_date").val();
+        var typeticket = $("#ticketCheck").val();
+
+
+        if (ngaybay == "Ngày Bay") {
+            $("#ngaybay").text("Please select your flight date");
+
+            return false;
+
+        }
+        if (typeticket == 2) {
+            if (ngayve == "Ngày về") {
+                $("#ngayve").text("Please select a return date");
+                return false
+            }
+            else {
+                return true;
+            }
+        }
+        return true;
+
+    });
+    $(document).ready(function () {
+        // By Default Disable radio button
+        $("#arrival_date").attr('disabled', true);
+        $("form input:radio").change(function () {
+            if ($(this).val() == "enable") {
+                $("#arrival_date").attr('disabled', false);
+                $("#ticketCheck").val(2);
+            }
+            else {
+                $("#arrival_date").attr('disabled', true);
+                $("#ticketCheck").val(1);
+            }
+        });
+    });
+</script>

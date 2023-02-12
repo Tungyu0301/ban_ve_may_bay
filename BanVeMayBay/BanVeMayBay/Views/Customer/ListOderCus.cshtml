@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BanVeMayBay.Models.order>
+
+
+<section class="flight-destinations">
+    <div class="container bg-white">
+        <div class="row">
+    
+                <div class="col-md-12 col-sm-12">
+  
+                    <div class="flight-table">
+                        <h2 style="text-align:center">List Booking Tickets</h2>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Hành khách</th>
+                                    <th>Ngày đặt</th>
+                                    <th>Chi tiết</th>
+                                    <th>Tổng cộng</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            <h6>@item.ID</h6>
+
+                                        </td>
+                                        <td>
+                                            <p>@item.name</p>
+
+                                        </td>
+                                        <td>
+                                            <p>@item.created_ate.ToString("dd-MM-yyyy HH:mm tt")</p>
+                                        </td>
+                                        <td>
+                                            <p><strong class="color-red-3"><a href="~/chi-tiet-order/@item.ID">Chi tiết</a></strong></p>
+
+                                        </td>
+                                        <td>
+                                            <h6><strong class="color-red-3">@item.total.ToString("N0") $</strong></h6>
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                 
+
+                </div>
+
+             
+        </div>
+    </div>
+
+</section>

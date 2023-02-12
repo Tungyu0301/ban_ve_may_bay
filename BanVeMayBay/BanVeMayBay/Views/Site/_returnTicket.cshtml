@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BanVeMayBay.Models.ticket>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td class="text-center">
+        <img style="width:70px;height:50px" src="~/public/images/flight/@item.airline" alt="">
+    </td>
+    <td>
+        <h6>@item.city.cityName</h6>
+        <p>Từ (@item.city.cityName)</p>
+    </td>
+    <td>
+        <h6>@item.city1.cityName</h6>
+        <P>Đến (@item.city1.cityName)</P>
+    </td>
+    <td>
+        <h6><strong class="color-red-3">@item.price.Value.ToString("N0") $</strong></h6>
+        <p class="emi">(Currency - $)</p>
+    </td>
+    <td>@item.ticketType</td>
+    <td>
+        <a href="~/chuyen-bay/@item.id">Chi Tiết</a>
+    </td>
+
+
+    <td>
+        @Html.RadioButton("datveKH", item.id, new { name = "idTitket", required = "required" })
+        @Html.Label("Book")
+    </td>
+</tr>
+}
+
+

@@ -1,0 +1,84 @@
+﻿@model BanVeMayBay.Models.ticket
+@{
+    ViewBag.Title = "flightDetail";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="booking">
+    <div class="container bg-white" style="margin-top:50px; margin-bottom:50px">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="booking-confirmed booking-outer">
+                    <div class="confirmation-title">
+                        <div class="form-title form-title-1">
+                            <h2 class="text-danger">Thông tin vé: @Model.city.cityName -> @Model.city1.cityName</h2>
+                        </div>
+                        <div class="payment-info detail">
+                            <div class="row">
+                                <div class="col-md-12">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <table class="table" style="margin-top:20px;">
+                    <tbody>
+                        <tr>
+                            <td class="title">Máy Bay</td>
+                            <td> <img style="width:50px;height:50px" src="~/public/images/flight/@Model.airline" alt=""></td>
+                        </tr>
+                        <tr>
+                            <td class="title">Giá</td>
+                            <td class="b-id text-danger">@Model.price.Value.ToString("N0") $</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Ngày Khởi Hành</td>
+                            <td>@Model.departure_date.Value.ToString("dd-MM-yyyy")</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Giờ Khởi Hành</td>
+                            <td>@Model.departure_time</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Ngày Khởi Hành</td>
+                            <td>@Model.arrival_time</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Từ</td>
+                            <td>@Model.city.cityName</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Đến</td>
+                            <td>@Model.city1.cityName</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Mã Máy bay</td>
+                            <td>@Model.flightCode</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Class</td>
+                            <td>@Model.ticketType</td>
+                        </tr>
+                        <tr>
+                            <td class="title">Số ghế trống</td>
+                            <td>@Model.guestTotal Seat</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+        </div>
+
+</section>
+<style>
+    .title {
+        font-size: 17px;
+        font-weight: bold;
+        padding-right: 50px;
+        color: #ff0000;
+    }
+</style>

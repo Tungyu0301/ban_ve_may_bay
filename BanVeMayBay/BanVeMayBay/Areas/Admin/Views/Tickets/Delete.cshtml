@@ -1,0 +1,177 @@
+﻿@model BanVeMayBay.Models.ticket
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_layOutAdmin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có muốn xóa không?</h3>
+<div>
+    <h4>Ticket</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.flightCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.flightCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.airline)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.airline)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.countryFlight.airport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countryFlight.airport)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ticketType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ticketType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fromAirport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromAirport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.toAirport)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toAirport)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departure_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departure_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.guestTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.guestTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.priceSale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.priceSale)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.sold)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sold)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.created_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.updated_by)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.updated_by)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

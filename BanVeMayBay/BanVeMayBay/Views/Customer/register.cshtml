@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "register";
+    Layout = "~/Views/Shared/_layOutSite.cshtml";
+}
+<section class="">
+    <div>
+        <form action="" method="post">
+            <div class="container bg-light">
+                @Html.Partial("_MessgeAlert")
+                <div class="row bg-light" @*style="margin-top: 90px;"*@>
+                    <div class="form-group col-md-6 col-xs-12" >
+                        <div>
+                            <label for="email">Tên Tài Khoản</label>
+                            <input class="mb-0 form-control" type="text" placeholder="Tên Tài Khoản" name="uname" required>
+                            <span class="text-danger">@ViewBag.error</span>
+                        </div>
+                        <div>
+                            <label for="fullname">Tên</label>
+                            <input type="text" class="mb-0 form-control" placeholder="Tên" name="fname" required>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input class="mb-0 form-control" type="email" id="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div>
+                            <label for="email">SĐT</label>
+                            <input class="mb-0 form-control" type="tel" name="SĐT" placeholder="SĐT"  required pattern="[0-9]{3}[0-9]{3}[0-9]{4}">
+                            <span asp-validation-for="phone" class="text-danger"></span>
+                        </div>
+                        <div>
+                            <label for="email">Địa Chỉ</label>
+                            <input class="mb-0 form-control" type="text" name="Địa Chỉ" placeholder="Địa Chỉ" required>
+                        </div>
+                        <div>
+                            <label for="password">Password</label>
+                            <input class="mb-0 form-control" type="password" name="psw" id="password" placeholder="Password" required>
+                        </div>
+                        <div>
+                            <label for="password">Xác Nhận Password</label>
+                            <input class="mb-0 form-control" type="password" id="repeat-password" name="repsw" placeholder="Xác Nhận Password" required>
+                        </div>
+
+                        <span class="text-danger">@ViewBag.error</span>
+                        <button style="margin-top:20px;" class="btn-blue btn-red btn-style-1 pt-2" type="submit">Đăng Ký</button>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <img style="width: 100%;height: 500px" class="d-block img-fluid imgregister" onerror="this.style.display='none'" src=https://media.cntraveler.com/photos/57067c1e9adc6caf5afe3f4c/master/pass/plane-landing-cr-getty-sb10062851ai-001.jpg  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</section>

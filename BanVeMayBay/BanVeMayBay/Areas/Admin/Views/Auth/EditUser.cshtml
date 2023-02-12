@@ -1,0 +1,122 @@
+﻿@model BanVeMayBay.Models.user
+
+@{
+    ViewBag.Title = "Cập nhật";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+
+
+}
+@{
+    List<SelectListItem> status = new List<SelectListItem>();
+
+    SelectListItem statusitem1 = new SelectListItem() { Value = "1", Text = "Hiện" };
+    SelectListItem statusitem2 = new SelectListItem() { Value = "2", Text = "Ẩn" };
+    status.Add(statusitem1);
+    status.Add(statusitem2);
+
+    List<SelectListItem> gender = new List<SelectListItem>();
+
+    SelectListItem gendertitem1 = new SelectListItem() { Value = "Nam", Text = "Nam" };
+    SelectListItem gendertitem2 = new SelectListItem() { Value = "Nữ", Text = "Nữ" };
+    gender.Add(gendertitem1);
+    gender.Add(gendertitem2);
+
+    List<SelectListItem> listRole = new List<SelectListItem>();
+    SelectListItem roleItem;
+    foreach (var item in ViewBag.role)
+    {
+        roleItem = new SelectListItem() { Value = item.parentId + "", Text = item.accessName + "" };
+        listRole.Add(roleItem);
+    }
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="card card-title bg-white p-1 container">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Edit Info</h5> </div>
+    </div>
+</div>
+
+
+
+<section class="pt-2 container card">
+    @Html.Partial("_MessgeAlert")
+    <div class=" bg-white p-4 ">
+
+        @using (Html.BeginForm("EditUser", "Auth", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.ID)
+            @Html.HiddenFor(model => model.created_at)
+            @Html.HiddenFor(model => model.address)
+            @Html.HiddenFor(model => model.created_by)
+            @Html.HiddenFor(model => model.img)
+            @Html.HiddenFor(model => model.password)
+            @Html.HiddenFor(model => model.created_at)
+            @Html.HiddenFor(model => model.created_by)
+            <div class=" row ">
+                <div class="col-md-4">  </div>
+                <div class="col-md-4"> <h3 class="text-center font-weight-bold text-success ">Chỉnh Sửa User</h3> </div>
+                <div class="col-md-4 ">
+                    <div class="float-right">
+                        <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Lưu</button>
+                        <a href="~/Admin/User" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i>Hủy</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" row ">
+                <div class="col-md-8">
+                    <div>
+                        <label for="psw"><span class=" ">Họ Tên</span></label>
+                        @Html.EditorFor(model => model.fullname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.fullname, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="psw"><span class=" ">Tài Khoản</span></label>
+                        @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
+                        <span class="text-cam">@ViewBag.error1</span>
+                    </div>
+                    <div>
+                        <label for="psw"><span class=" ">Email </span></label>
+                        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="psw"><span class=" ">SĐT</span></label>
+                        @*@Html.EditorFor(model => model.phone, new { htmlAttributes = new { type = "number", @class = "form-control" } })*@
+                        <input type="tel" name="phone" class="form-control" value="@Model.phone" />
+                        @*@Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })*@
+                        <span asp-validation-for="phone"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div>
+                        <label for="psw"><span class=" ">Giới Tính</span></label>
+                        @Html.DropDownListFor(model => model.gender, gender, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.gender, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="psw"><span class=" ">Status</span></label>
+                        @Html.DropDownListFor(model => model.status, status, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary ">Quyền</span></label>
+                        <input type="text" name="status" class="form-control" value="@if (Model.access == 0) {
+                        @Model.access.ToString("Admin")
+
+                        } else {@Model.access.ToString("SalesMan") } " readonly />
+                        @*@Html.DropDownListFor(model => model.access, listRole, new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(model => model.access, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+            </div>
+        }
+    </div>
+</section>
+<script>
+    $("#user").addClass("active");
+</script>

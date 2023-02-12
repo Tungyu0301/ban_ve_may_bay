@@ -1,0 +1,191 @@
+﻿@model BanVeMayBay.Models.ticket
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_layOutAdmin.cshtml";
+}
+
+
+<div class="card card-title bg-white p-1">
+    <div class="row">
+        <div class="col-md-6 "> <h5 class="pl-2 mt-2 text-blues">Cập nhật vé</h5> </div>
+        <div class="col-md-6 m-0">
+            <ol class="breadcrumb bg-white float-sm-right m-0">
+                <li class="breadcrumb-item"><a href="/Admin">Trang chủ</a></li>
+                <li class="breadcrumb-item active">Cập nhật vé</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<section class="card card-title bg-white p-1">
+    @Html.Partial("_MessgeAlert")
+    <div class="container bg-white pt-4 " style="margin-bottom:30px">
+
+        @using (Html.BeginForm("Edit", "Tickets", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class=" row ">
+                <div class="col-md-4">  </div>
+                <div class="col-md-4"> <h3 class="text-center font-weight-bold text-success ">Cập nhật vé</h3> </div>
+                <div class="col-md-4 ">
+                    <div class="float-right">
+                        <button class="btn btn-sm bg-success text-white"><i class="far fa-save"></i> Lưu</button>
+                        <a href="~/admin/Tickets" class="btn btn-sm bg-danger text-white"><i class="far fa-window-close"></i> Hủy</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" row ">
+                <div class="col-md-10">
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Tên hãng</span></label>
+
+                        <input type="text" name="name" class="form-control" value="@Model.name" required />
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Mô tả</span></label>
+                        <input type="text" name="description" class="form-control" value="@Model.description" required />
+
+                    </div>
+
+
+                </div>
+                <div class="col-md-5 ">
+
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Từ</span></label>
+                        <select name="fromAirport" class="selectpicker form-control" tabindex="1">
+
+                            @foreach (var item in ViewBag.cities)
+                            {
+                                <option value="@Model.city.cityId">@Model.city.cityName</option>
+                                <option value="@item.cityId">@item.cityName</option>
+                            }
+
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Đến</span></label>
+                        <select name="toAirport" class="selectpicker form-control" tabindex="1">
+
+                            @foreach (var item in ViewBag.cities)
+                            {
+                                <option value="@Model.city1.cityId">@Model.city1.cityName</option>
+                                <option value="@item.cityId">@item.cityName</option>
+                            }
+
+
+                        </select>
+
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Mã Chuyến Bay</span></label>
+                        <input type="text" name="flightCode" class="form-control" value="@Model.flightCode" placeholder="" required />
+                        <span asp-validation-for="flight" class="text-danger"></span>
+                    </div>
+
+
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Hạng</span></label>
+                        <select name="ticketType" class="selectpicker form-control" tabindex="1">
+                            <option selected value="@Model.ticketType">@Model.ticketType</option>
+                            <option value="Promotion">Promotion</option>
+                            <option value="Economic">Economic</option>
+                            <option value="Bussiness">Bussiness</option>
+                        </select>
+
+                    </div>
+
+
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Số Ghế</span></label>
+                        <input type="number" name="guestTotal" class="form-control" value="@Model.guestTotal" placeholder="Amount Seats > 50" required min="50" />
+                        <span asp-validation-for="guestTotal" class="text-danger"></span>
+                    </div>
+
+                </div>
+                <div class="col-md-5">
+                    <div>
+
+                        <label for="psw"><span class="text-secondary font-weight-bold">Ngày Khởi Hành</span></label>
+                            <input type="date" name="departure_date" class="form-control" value="@Model.departure_date.Value.ToString("yyyy-MM-dd")" />                      
+
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Giờ Khởi Hành</span></label>
+                        <input type="time" name="departure_time" class="form-control" value="@Model.departure_time" required />
+
+
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Giờ Đến</span></label>
+                        <input type="time" name="arrival_time" class="form-control" value="@Model.arrival_time" required />
+
+
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold"> Hãng Máy Bay</span></label>
+                        <input type="hidden" class="form-control" value="@Model.airline" name="airline" />
+                        <input type="file" class="form-control"  name="airline" />
+
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Giá</span></label>
+                        <input type="number" name="price" class="form-control" placeholder="30$ <= Price <= 3000$" value="@Model.price" required min="30" max="3000" />
+                        <span asp-validation-for="price" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label for="psw"><span class="text-secondary font-weight-bold">Status</span></label>
+                        <select name="status" class="selectpicker form-control" tabindex="1">
+                            <option value="1">Display</option>
+                            <option value="2">Hidden</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+<script>
+    $("#form-search").submit(function (event) {
+        $("#ngaybay").text("");
+        $("#ngayve").text("");
+        var ngaybay = $("#departure_date").val();
+        var ngayve = $("#arrival_date").val();
+        var typeticket = $("#ticketCheck").val();
+
+
+        if (ngaybay == "Ngày Bay") {
+            $("#ngaybay").text("Please select your flight date");
+
+            return false;
+
+        }
+        if (typeticket == 2) {
+            if (ngayve == "Ngày về") {
+                $("#ngayve").text("Please select a return date");
+                return false
+            }
+            else {
+                return true;
+            }
+        }
+        return true;
+
+    });
+    $(document).ready(function () {
+        // By Default Disable radio button
+        $("#arrival_date").attr('disabled', true);
+        $("form input:radio").change(function () {
+            if ($(this).val() == "enable") {
+                $("#arrival_date").attr('disabled', false);
+                $("#ticketCheck").val(2);
+            }
+            else {
+                $("#arrival_date").attr('disabled', true);
+                $("#ticketCheck").val(1);
+            }
+        });
+    });
+</script>

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BanVeMayBay.Models.ticket>
+@{ var sum = 0;}
+@foreach (var item in Model)
+{
+    
+    <table style="margin-top:20px;">
+        <tbody>
+            <tr>
+                <td class="title">Tổng Cộng</td>
+                <td class="b-id text-danger">@item.price.Value.ToString("N0") $</td>
+            </tr>
+            <tr>
+                <td class="title">Ngày đi</td>
+                <td>@item.departure_date</td>
+            </tr>
+            <tr>
+                <td class="title">Từ</td>
+                <td>@item.city.cityName</td>
+            </tr>
+            <tr>
+                <td class="title">Đến</td>
+                <td>@item.city1.cityName</td>
+            </tr>
+            <tr>
+                <td class="title">Giờ Khởi Hành</td>
+                <td>@item.departure_time</td>
+            </tr>
+            <tr>
+                <td class="ArriveTime">Giờ Đến</td>
+                <td>@item.arrival_time</td>
+            </tr>
+        </tbody>
+    </table>   
+    
+    sum += (int)item.price;
+}
